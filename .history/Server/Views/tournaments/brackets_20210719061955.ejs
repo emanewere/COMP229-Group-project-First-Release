@@ -119,7 +119,7 @@
                   <td><%= tournaments.WinnerFirstQuarterFinal %>    <%= tournaments.ScoreNine %></td>
                   <td class="text-center"><%= tournaments.WinnerSecondQuarterFinal %>    <%= tournaments.ScoreTen %></td>
                  
-                  <% if (tournaments.CompleteTournament != "TRUE" && tournaments.WinnerFirstQuarterFinal != "WinnerFirstQuarterFinal" && tournaments.WinnerSecondQuarterFinal != "WinnerSecondQuarterFinal") { %> 
+                  <% if (tournaments.CompleteTournament != "TRUE" || tournaments.WinnerFirstQuarterFinal == "WinnerFirstQuarterFinal" || tournaments.WinnerSecondQuarterFinal == "WinnerSecondQuarterFinal") { %> 
                   <td class="text-center">
                     <!-- ------------------------ -->
                     <!-- EDIT BUTTON HAS BEEN ADDED HERE -->
@@ -136,7 +136,7 @@
                   <td><%= tournaments.WinnerThirdQuarterFinal %>    <%= tournaments.ScoreEleven %></td>
                   <td class="text-center"><%= tournaments.WinnerFourthQuarterFinal %>     <%= tournaments.ScoreTwelve %></td>
                  
-                  <% if (tournaments.CompleteTournament != "TRUE" && tournaments.WinnerThirdQuarterFinal != "WinnerThirdQuarterFinal" && tournaments.WinnerFourthQuarterFinal != "WinnerFourthQuarterFinal") { %> 
+                  <% if (tournaments.CompleteTournament != "TRUE") { %> 
                   <td class="text-center">
                     <!-- ------------------------ -->
                     <!-- EDIT BUTTON HAS BEEN ADDED HERE -->
@@ -176,7 +176,7 @@
                   <td><%= tournaments.WinnerFirstSemiFinal %>    <%= tournaments.ScoreThirteen %></td>
                   <td class="text-center"><%= tournaments.WinnerSecondSemiFinal %>    <%= tournaments.ScoreFourteen %></td>
                  
-                  <% if (tournaments.CompleteTournament != "TRUE"&& tournaments.WinnerFirstSemiFinal != "WinnerFirstSemiFinal" && tournaments.WinnerSecondSemiFinal != "WinnerSecondSemiFinal") { %> 
+                  <% if (tournaments.CompleteTournament != "TRUE") { %> 
                   <td class="text-center">
                     <!-- ------------------------ -->
                     <!-- EDIT BUTTON HAS BEEN ADDED HERE -->
