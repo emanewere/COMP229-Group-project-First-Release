@@ -96,14 +96,19 @@ router.get('/:id/:match', (req, res, next) => {
            console.error(err);
            res.end(err);
        }
-       
-       //Renders the edit a bracket page
-       res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
-        
 
-        
-       
-       
+       // show the edit view
+       if(tournamentItemToEdit.IsSet==="TRUE")
+       {
+        // show the edit view
+        //res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit}); 
+        res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
+       }
+
+       else
+       {
+        res.render('tournaments/registerplayers', { title: 'Registerplayers', page: 'registerplayers', tournaments: tournamentItemToEdit});  
+       }
        
    });
 });
@@ -149,8 +154,7 @@ router.post('/:id/:match', (req, res, next) => {
     * APPROPRIATE CODE ADDED HERE *
     *****************/
    let id = req.params.id;
-  
-  let match = req.params.match;
+
    // pass the id to the db
   tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
   {
@@ -163,75 +167,25 @@ router.post('/:id/:match', (req, res, next) => {
       else
       {
           // show the edit view
+        
+        
            // instantiate a new tournament Item
-           
-            let updatedTournamentItem = new tournament
-            ({
-              "_id": id,
-              "PlayerOne": req.body.name,
-              "StartDate": req.body.startdate,
-              "PlayerOne": req.body.playerone,
-              "PlayerTwo": req.body.playertwo,
-              "PlayerThree": req.body.playerthree,
-              "PlayerFour": req.body.playerfour,
-              "PlayerFive": req.body.playerfive,
-              "PlayerSix": req.body.playersix,
-              "PlayerSeven": req.body.playerseven,
-              "PlayerEight": req.body.playereight,
-              "IsSet": "TRUE",
-              "WinnerFirstQuarterFinal":req.body.winnerfirstquarterfinal,
-              "WinnerSecondQuarterFinal":req.body.winnersecondquarterfinal,
-              "WinnerThirdQuarterFinal":req.body.winnerthirdquarterfinal,
-              "WinnerFourthQuarterFinal":req.body.winnerfourthquarterfinal,
-              "WinnerFirstSemiFinal":req.body.winnerfirstsemifinal,
-              "WinnerSecondSemiFinal":req.body.winnersecondsemifinal,
-              "WinnerFinal": req.body.winnerfinal
-            });
-            
-            if(match === "one")
-            {
-              updatedTournamentItem.WinnerFirstQuarterFinal = "Greece";
-            }
-
-            else if(match === "two")
-            {
-              updatedTournamentItem.WinnerSecondQuarterFinal = "Germany";
-            }
-
-            else if(match === "three")
-            {
-              updatedTournamentItem.WinnerThirdQuarterFinal = "Brazil";
-            }
-
-            else if(match === "four")
-            {
-              updatedTournamentItem.WinnerFourthQuarterFinal = "Dutch";
-            }
-
-            else if(match === "five")
-            {
-              updatedTournamentItem.WinnerFirstSemiFinal = "Greece";
-            }
-
-            else if(match === "six")
-            {
-              updatedTournamentItem.WinnerSecondSemiFinal = "Brazil";
-            }
-
-
-            else if(match === "seven")
-            {
-              updatedTournamentItem.WinnerFinal = "Brazil";
-            }
-
-           
-
-
-            
-           
-
-           
-   
+   let updatedTournamentItem = new tournament
+   ({
+     "_id": id,
+     "PlayerOne": req.body.name,
+     "StartDate": req.body.startdate,
+     "PlayerOne": req.body.playerone,
+     "PlayerTwo": req.body.playertwo,
+     "PlayerThree": req.body.playerthree,
+     "PlayerFour": req.body.playerfour,
+     "PlayerFive": req.body.playerfive,
+     "PlayerSix": req.body.playersix,
+     "PlayerSeven": req.body.playerseven,
+     "PlayerEight": req.body.playereight,
+     "IsSet": "TRUE",
+     "WinnerFinal":req.body.playerOne
+   });
  
    // find the tournament item via db.tournaments.update({"_id":id}) and then update
    tournament.updateOne({_id: id}, updatedTournamentItem, {}, (err) =>{

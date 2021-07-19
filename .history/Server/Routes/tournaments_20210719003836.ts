@@ -221,7 +221,7 @@ router.post('/:id/:match', (req, res, next) => {
 
             else if(match === "seven")
             {
-              updatedTournamentItem.WinnerFinal = "Brazil";
+              updatedTournamentItem.WinnerSecondSemiFinal = "Brazil";
             }
 
            

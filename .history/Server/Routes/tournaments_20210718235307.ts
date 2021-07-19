@@ -81,7 +81,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET the Tournament brackets edit page in order to edit an existing Tournament
-router.get('/:id/:match', (req, res, next) => {
+router.get('/:id/:match/:att', (req, res, next) => {
 
   /*****************
    * APPROPRIATE CODE ADDED HERE *
@@ -96,12 +96,16 @@ router.get('/:id/:match', (req, res, next) => {
            console.error(err);
            res.end(err);
        }
-       
-       //Renders the edit a bracket page
-       res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
-        
 
-        
+        if(match === "one")
+        {
+          res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
+        }
+
+        else if(match === "two")
+        {
+          res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
+        }
        
        
        
@@ -143,13 +147,13 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-router.post('/:id/:match', (req, res, next) => {
+router.post('/:id/:match/:att', (req, res, next) => {
 
   /*****************
     * APPROPRIATE CODE ADDED HERE *
     *****************/
    let id = req.params.id;
-  
+  let att = req.params.att;
   let match = req.params.match;
    // pass the id to the db
   tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
@@ -168,8 +172,8 @@ router.post('/:id/:match', (req, res, next) => {
             let updatedTournamentItem = new tournament
             ({
               "_id": id,
-              "PlayerOne": req.body.name,
-              "StartDate": req.body.startdate,
+              "Name": req.body.name,
+              "StartDate": req.body.StartDate,
               "PlayerOne": req.body.playerone,
               "PlayerTwo": req.body.playertwo,
               "PlayerThree": req.body.playerthree,
@@ -179,7 +183,7 @@ router.post('/:id/:match', (req, res, next) => {
               "PlayerSeven": req.body.playerseven,
               "PlayerEight": req.body.playereight,
               "IsSet": "TRUE",
-              "WinnerFirstQuarterFinal":req.body.winnerfirstquarterfinal,
+              //"WinnerFirstQuarterFinal":req.body.winnerfirstquarterfinal,
               "WinnerSecondQuarterFinal":req.body.winnersecondquarterfinal,
               "WinnerThirdQuarterFinal":req.body.winnerthirdquarterfinal,
               "WinnerFourthQuarterFinal":req.body.winnerfourthquarterfinal,
@@ -197,35 +201,6 @@ router.post('/:id/:match', (req, res, next) => {
             {
               updatedTournamentItem.WinnerSecondQuarterFinal = "Germany";
             }
-
-            else if(match === "three")
-            {
-              updatedTournamentItem.WinnerThirdQuarterFinal = "Brazil";
-            }
-
-            else if(match === "four")
-            {
-              updatedTournamentItem.WinnerFourthQuarterFinal = "Dutch";
-            }
-
-            else if(match === "five")
-            {
-              updatedTournamentItem.WinnerFirstSemiFinal = "Greece";
-            }
-
-            else if(match === "six")
-            {
-              updatedTournamentItem.WinnerSecondSemiFinal = "Brazil";
-            }
-
-
-            else if(match === "seven")
-            {
-              updatedTournamentItem.WinnerFinal = "Brazil";
-            }
-
-           
-
 
             
            
@@ -297,16 +272,16 @@ router.post('/:id', (req, res, next) => {
    let updatedTournamentItem = new tournament
    ({
      "_id": id,
-     "PlayerOne": req.body.name,
-     "StartDate": req.body.startdate,
-     "PlayerOne": req.body.playerone,
-     "PlayerTwo": req.body.playertwo,
-     "PlayerThree": req.body.playerthree,
-     "PlayerFour": req.body.playerfour,
-     "PlayerFive": req.body.playerfive,
-     "PlayerSix": req.body.playersix,
-     "PlayerSeven": req.body.playerseven,
-     "PlayerEight": req.body.playereight,
+     "Name": req.body.name,
+     "StartDate": req.body.StartDate,
+     "PlayerOne": req.body.PlayerOne,
+     "PlayerTwo": req.body.PlayerTwo,
+     "PlayerThree": req.body.PlayerThree,
+     "PlayerFour": req.body.PlayerFour,
+     "PlayerFive": req.body.PlayerFive,
+     "PlayerSix": req.body.PlayerSix,
+     "PlayerSeven": req.body.PlayerSeven,
+     "PlayerEight": req.body.PlayerEight,
      "IsSet": "TRUE"
    });
  

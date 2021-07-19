@@ -210,21 +210,13 @@ router.post('/:id/:match', (req, res, next) => {
 
             else if(match === "five")
             {
-              updatedTournamentItem.WinnerFirstSemiFinal = "Greece";
+              updatedTournamentItem.WinnerFirstSemifinalFinal = "Greece";
             }
 
-            else if(match === "six")
+            else if(match === "Six")
             {
-              updatedTournamentItem.WinnerSecondSemiFinal = "Brazil";
+              updatedTournamentItem.WinnerSecondSemifinalFinal = "Brazil";
             }
-
-
-            else if(match === "seven")
-            {
-              updatedTournamentItem.WinnerFinal = "Brazil";
-            }
-
-           
 
 
             

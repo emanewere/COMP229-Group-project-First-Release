@@ -96,12 +96,16 @@ router.get('/:id/:match', (req, res, next) => {
            console.error(err);
            res.end(err);
        }
-       
-       //Renders the edit a bracket page
-       res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
-        
 
-        
+        if(match === "one")
+        {
+          res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
+        }
+
+        else if(match === "two")
+        {
+          res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
+        }
        
        
        
@@ -210,21 +214,13 @@ router.post('/:id/:match', (req, res, next) => {
 
             else if(match === "five")
             {
-              updatedTournamentItem.WinnerFirstSemiFinal = "Greece";
+              updatedTournamentItem.WinnerFirstSemifinalQuarterFinal = "Greece";
             }
 
-            else if(match === "six")
+            else if(match === "Six")
             {
-              updatedTournamentItem.WinnerSecondSemiFinal = "Brazil";
+              updatedTournamentItem.WinnerSecondSemifinalQuarterFinal = "Brazil";
             }
-
-
-            else if(match === "seven")
-            {
-              updatedTournamentItem.WinnerFinal = "Brazil";
-            }
-
-           
 
 
             

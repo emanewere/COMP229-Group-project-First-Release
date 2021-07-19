@@ -81,7 +81,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET the Tournament brackets edit page in order to edit an existing Tournament
-router.get('/:id/:match', (req, res, next) => {
+router.get('/:id/:match/:att', (req, res, next) => {
 
   /*****************
    * APPROPRIATE CODE ADDED HERE *
@@ -96,12 +96,16 @@ router.get('/:id/:match', (req, res, next) => {
            console.error(err);
            res.end(err);
        }
-       
-       //Renders the edit a bracket page
-       res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
-        
 
-        
+        if(match === "one")
+        {
+          res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
+        }
+
+        else if(match === "two")
+        {
+          res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
+        }
        
        
        
@@ -143,13 +147,13 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-router.post('/:id/:match', (req, res, next) => {
+router.post('/:id/:match/:att', (req, res, next) => {
 
   /*****************
     * APPROPRIATE CODE ADDED HERE *
     *****************/
    let id = req.params.id;
-  
+  let att = req.params.att;
   let match = req.params.match;
    // pass the id to the db
   tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
@@ -200,31 +204,13 @@ router.post('/:id/:match', (req, res, next) => {
 
             else if(match === "three")
             {
-              updatedTournamentItem.WinnerThirdQuarterFinal = "Brazil";
+              updatedTournamentItem.WinnerSecondQuarterFinal = "Germany";
             }
 
             else if(match === "four")
             {
-              updatedTournamentItem.WinnerFourthQuarterFinal = "Dutch";
+              updatedTournamentItem.WinnerSecondQuarterFinal = "Germany";
             }
-
-            else if(match === "five")
-            {
-              updatedTournamentItem.WinnerFirstSemiFinal = "Greece";
-            }
-
-            else if(match === "six")
-            {
-              updatedTournamentItem.WinnerSecondSemiFinal = "Brazil";
-            }
-
-
-            else if(match === "seven")
-            {
-              updatedTournamentItem.WinnerFinal = "Brazil";
-            }
-
-           
 
 
             
