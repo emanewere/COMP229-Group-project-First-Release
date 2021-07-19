@@ -4,18 +4,20 @@
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <h3> Bracket for this tournament </h3>
+          <h3>Your tournaments </h3>
           <!-- ------------------------ -->
           <!-- THE ADD BUTTON HAS BEEN FIXED -->
           <!-- ------------------------ -->
-          
+          <a href="/tournaments/add" class="btn btn-primary"><i class="fa fa-plus"></i> Create a tournament</a>
           <br>
           <div class="table-responsive">
             <table class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
-                  <th>Round of eight</th>
-                  
+                  <th>Name</th>
+                  <th class="text-center">Date</th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -128,8 +130,10 @@
             <table class="table table-bordered table-striped table-hover">
               <thead>
                 <tr>
-                  <th>Round of four</th>
-                  
+                  <th>Name</th>
+                  <th class="text-center">Date</th>
+                  <th class="text-center"></th>
+                  <th class="text-center"></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -182,30 +186,9 @@
                 </tr>
 
 
-               
-
-                <% } %>
-              </tbody>
-            </table>
-          </div>
-
-
-          <!-- FINAL -->
-          <br>
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
-              <thead>
                 <tr>
-                  <th>Final</th>
-                 
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Template Row -->
-                <% for (let count = 0; count < 1; count++) { %>
-                <tr>
-                  <td><%= tournaments.PlayerOne %></td>
-                  <td class="text-center"><%= tournaments.PlayerTwo %></td>
+                  <td><%= tournaments.PlayerFive %></td>
+                  <td class="text-center"><%= tournaments.PlayerSix %></td>
                  
 
                   <td class="text-center">
@@ -226,29 +209,9 @@
                   
                 </tr>
 
-                
-
-                <% } %>
-              </tbody>
-            </table>
-          </div>
-
-          <!-- WINNER -->
-          <br>
-          <div class="table-responsive">
-            <table class="table table-bordered table-striped table-hover">
-              <thead>
                 <tr>
-                  <th>Winner</th>
-                  
-                </tr>
-                </thead>
-                <tbody>
-                <!-- Template Row -->
-                <% for (let count = 0; count < 1; count++) { %>
-                <tr>
-                  <td><%= tournaments.PlayerOne %></td>
-                  <td class="text-center"><%= tournaments.PlayerTwo %></td>
+                  <td><%= tournaments.PlayerSeven %></td>
+                  <td class="text-center"><%= tournaments.PlayerEight %></td>
                  
 
                   <td class="text-center">
@@ -269,7 +232,8 @@
                   
                 </tr>
 
-                
+
+              
 
                 <% } %>
               </tbody>
