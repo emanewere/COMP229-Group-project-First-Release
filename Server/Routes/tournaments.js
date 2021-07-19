@@ -53,7 +53,12 @@ router.get('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
             console.error(err);
             res.end(err);
         }
-        res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit });
+        if (match === "eight") {
+            res.render('tournaments/bracketsEditTwo', { title: 'Bracketfortournament', page: 'bracketsEditTwo', tournaments: tournamentItemToEdit });
+        }
+        else {
+            res.render('tournaments/bracketsEditOne', { title: 'Bracketfortournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit });
+        }
     });
 });
 router.get('/:id', (req, res, next) => {
@@ -103,6 +108,9 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
                 "WinnerSecondSemiFinal": req.body.winnersecondsemifinal,
                 "WinnerFinal": req.body.winnerfinal
             });
+            if (match === "eight") {
+                updatedTournamentItem.Finished = "Congratulations: " + secondPlayer;
+            }
             if (match === "one") {
                 updatedTournamentItem.ScoreOne = req.body.scoreone;
                 updatedTournamentItem.ScoreTwo = req.body.scoretwo;

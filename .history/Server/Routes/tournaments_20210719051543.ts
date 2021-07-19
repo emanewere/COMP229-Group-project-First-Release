@@ -100,8 +100,7 @@ router.get('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
        
        if(match === "eight")
        {
-           //Renders the edit a bracket page
-       res.render('tournaments/bracketsEditTwo', { title: 'Bracketfortournament', page: 'bracketsEditTwo', tournaments: tournamentItemToEdit});
+
        }
        else
        {
@@ -201,11 +200,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
             });
 
            
-            if(match === "eight")
-            {
-              
-                updatedTournamentItem.Finished = "Congratulations: "+ secondPlayer;
-            } 
+            
             
             if(match === "one")
             {

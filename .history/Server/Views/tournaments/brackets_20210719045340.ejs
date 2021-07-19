@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-md-offset-1 col-md-10">
-          <h3> Bracket for this tournament. <%= tournaments.Finished %> </h3>
+          <h3> Bracket for this tournament: <%= tournaments.Finished %> </h3>
           <!-- ------------------------ -->
           <!-- THE ADD BUTTON HAS BEEN FIXED -->
           <!-- ------------------------ -->
@@ -218,8 +218,7 @@
                     <!-- ------------------------ -->
                     <!-- COMPLETE A TOURNAMENT BUTTON HAS BEEN ADDED HERE -->
                     <!-- ------------------------ -->
-                    <i class="fa fa-check-square-o"></i> Submit
-                    <button type="submit"  class="btn btn-primary"><a href="/tournaments/<%= tournaments._id %>/eight/eight/<%= tournaments.WinnerFinal %> %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Complement the tournament</a></button>
+                    <td class="text-center"><a href="/tournaments/<%= tournaments._id %>/eight/<%= tournaments.WinnerFinal %>/<%= tournaments.Finished %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Complement the tournament</a></td>
                   </td>
                   
                 </tr>

@@ -45,7 +45,7 @@ const TournamentSchema = new Schema
     ScoreTwelve:Number,
     ScoreThirteen:Number,
     ScoreFourteen:Number,
-    Finished:String
+    finished:String
     
 },
 {
