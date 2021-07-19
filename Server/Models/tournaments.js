@@ -17,7 +17,14 @@ const TournamentSchema = new Schema({
     PlayerSix: String,
     PlayerSeven: String,
     PlayerEight: String,
-    IsSet: String
+    IsSet: String,
+    WinnerFirstQuarterFinal: String,
+    WinnerSecondQuarterFinal: String,
+    WinnerThirdQuarterFinal: String,
+    WinnerFourthQuarterFinal: String,
+    WinnerFirstSemiFinal: String,
+    WinnerSecondSemiFinal: String,
+    WinnerFinal: String
 }, {
     collection: "tournaments"
 });

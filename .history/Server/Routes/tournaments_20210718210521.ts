@@ -80,41 +80,6 @@ router.post('/add', (req, res, next) => {
 
 });
 
-// GET the Tournament brackets edit page in order to edit an existing Tournament
-router.get('/:id/:match', (req, res, next) => {
-
-  /*****************
-   * APPROPRIATE CODE ADDED HERE *
-   *****************/
-   let id = req.params.id; 
-   let match = req.params.match;
-   // pass the id to the db
-   tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
-   {
-       if(err)
-       {
-           console.error(err);
-           res.end(err);
-       }
-
-       // show the edit view
-       if(tournamentItemToEdit.IsSet==="TRUE")
-       {
-        // show the edit view
-        //res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit}); 
-        res.render('tournaments/bracketsEditOne', { title: 'Bracket for tournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit});
-       }
-
-       else
-       {
-        res.render('tournaments/registerplayers', { title: 'Register players', page: 'edit', tournaments: tournamentItemToEdit});  
-       }
-       
-   });
-});
-
-
-
 // GET the Tournament Details page in order to edit an existing Tournament
 router.get('/:id', (req, res, next) => {
 
@@ -122,7 +87,7 @@ router.get('/:id', (req, res, next) => {
    * APPROPRIATE CODE ADDED HERE *
    *****************/
    let id = req.params.id;
-  
+   let record = req.params.one;
    // pass the id to the db
    tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
    {
@@ -146,84 +111,6 @@ router.get('/:id', (req, res, next) => {
        
    });
 });
-
-// POST - process the information passed from the details form and update the document
-router.post('/:id/:match', (req, res, next) => {
-
-  /*****************
-    * APPROPRIATE CODE ADDED HERE *
-    *****************/
-   let id = req.params.id;
-
-   // pass the id to the db
-  tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
-  {
-      if(err)
-      {
-          console.error(err);
-          res.end(err);
-      }
-
-      else
-      {
-          // show the edit view
-        
-        
-           // instantiate a new tournament Item
-   let updatedTournamentItem = new tournament
-   ({
-     "_id": id,
-     "PlayerOne": req.body.name,
-     "StartDate": req.body.startdate,
-     "PlayerOne": req.body.playerone,
-     "PlayerTwo": req.body.playertwo,
-     "PlayerThree": req.body.playerthree,
-     "PlayerFour": req.body.playerfour,
-     "PlayerFive": req.body.playerfive,
-     "PlayerSix": req.body.playersix,
-     "PlayerSeven": req.body.playerseven,
-     "PlayerEight": req.body.playereight,
-     "IsSet": "TRUE",
-     "WinnerFinal":req.body.playerOne
-   });
- 
-   // find the tournament item via db.tournaments.update({"_id":id}) and then update
-   tournament.updateOne({_id: id}, updatedTournamentItem, {}, (err) =>{
-     if(err)
-     {
-       console.error(err);
-       res.end(err);
-     }
-
-  // pass the id to the db
-  tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
-  {
-      if(err)
-      {
-          console.error(err);
-          res.end(err);
-      }
-
-      // show the edit view
-      res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit});
-  });
- 
-     
-   });
-        }
-      
-
-      
-
-      
-  });
-
-  
-
-});
-
-
-
 
 // POST - process the information passed from the details form and update the document
 router.post('/:id', (req, res, next) => {

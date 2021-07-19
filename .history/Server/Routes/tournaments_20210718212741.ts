@@ -183,7 +183,7 @@ router.post('/:id/:match', (req, res, next) => {
      "PlayerSix": req.body.playersix,
      "PlayerSeven": req.body.playerseven,
      "PlayerEight": req.body.playereight,
-     "IsSet": "TRUE",
+     "IsSet": "TRUE"
      "WinnerFinal":req.body.playerOne
    });
  

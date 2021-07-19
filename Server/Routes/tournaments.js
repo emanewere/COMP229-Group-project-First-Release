@@ -27,7 +27,14 @@ router.get('/add', (req, res, next) => {
 router.post('/add', (req, res, next) => {
     let newTournament = new tournaments_1.default({
         "Name": req.body.name,
-        "StartDate": req.body.startdate
+        "StartDate": req.body.startdate,
+        "WinnerFirstQuarterFinal": "WinnerFirstQuarterFinal",
+        "WinnerSecondQuarterFinal": "WinnerSecondQuarterFinal",
+        "WinnerThirdQuarterFinal": "WinnerThirdQuarterFinal",
+        "WinnerFourthQuarterFinal": "WinnerFourthQuarterFinal",
+        "WinnerFirstSemiFinal": "WinnerFirstSemiFinal",
+        "WinnerSecondSemiFinal": "WinnerSecondSemiFinal",
+        "WinnerFinal": "WinnerFinal"
     });
     tournaments_1.default.create(newTournament, (err) => {
         if (err) {
@@ -35,6 +42,22 @@ router.post('/add', (req, res, next) => {
             res.end(err);
         }
         res.redirect('/tournaments');
+    });
+});
+router.get('/:id/:match', (req, res, next) => {
+    let id = req.params.id;
+    let match = req.params.match;
+    tournaments_1.default.findById(id, {}, {}, (err, tournamentItemToEdit) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        if (tournamentItemToEdit.IsSet === "TRUE") {
+            res.render('tournaments/bracketsEditOne', { title: 'Bracket for tournament', page: 'bracketsEditOne', tournaments: tournamentItemToEdit });
+        }
+        else {
+            res.render('tournaments/registerplayers', { title: 'Register players', page: 'edit', tournaments: tournamentItemToEdit });
+        }
     });
 });
 router.get('/:id', (req, res, next) => {
@@ -49,6 +72,45 @@ router.get('/:id', (req, res, next) => {
         }
         else {
             res.render('tournaments/registerplayers', { title: 'Register players', page: 'edit', tournaments: tournamentItemToEdit });
+        }
+    });
+});
+router.post('/:id/:match', (req, res, next) => {
+    let id = req.params.id;
+    tournaments_1.default.findById(id, {}, {}, (err, tournamentItemToEdit) => {
+        if (err) {
+            console.error(err);
+            res.end(err);
+        }
+        else {
+            let updatedTournamentItem = new tournaments_1.default({
+                "_id": id,
+                "PlayerOne": req.body.name,
+                "StartDate": req.body.startdate,
+                "PlayerOne": req.body.playerone,
+                "PlayerTwo": req.body.playertwo,
+                "PlayerThree": req.body.playerthree,
+                "PlayerFour": req.body.playerfour,
+                "PlayerFive": req.body.playerfive,
+                "PlayerSix": req.body.playersix,
+                "PlayerSeven": req.body.playerseven,
+                "PlayerEight": req.body.playereight,
+                "IsSet": "TRUE",
+                "WinnerFinal": req.body.playerOne
+            });
+            tournaments_1.default.updateOne({ _id: id }, updatedTournamentItem, {}, (err) => {
+                if (err) {
+                    console.error(err);
+                    res.end(err);
+                }
+                tournaments_1.default.findById(id, {}, {}, (err, tournamentItemToEdit) => {
+                    if (err) {
+                        console.error(err);
+                        res.end(err);
+                    }
+                    res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit });
+                });
+            });
         }
     });
 });

@@ -29,7 +29,7 @@ const TournamentSchema = new Schema
     WinnerThirdQuarterFinal:String,
     WinnerFourthQuarterFinal:String,
     WinnerFirstSemiFinal:String,
-    WinnerSecondSemiFinal:String,
+    WinnerFirstSecondFinal:String,
     WinnerFinal:String
     
 },
