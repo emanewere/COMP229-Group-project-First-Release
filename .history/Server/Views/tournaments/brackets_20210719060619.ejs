@@ -80,14 +80,14 @@
                   <td><%= tournaments.PlayerSeven %>    <%= tournaments.ScoreSeven %></td>
                   <td class="text-center"><%= tournaments.PlayerEight %>    <%= tournaments.ScoreEight %></td>
                  
-                   <% if (tournaments.CompleteTournament != "TRUE") { %> 
+
                   <td class="text-center">
                     <!-- ------------------------ -->
                     <!-- EDIT BUTTON HAS BEEN ADDED HERE -->
                     <!-- ------------------------ -->
                     <td class="text-center"><a href="/tournaments/<%= tournaments._id %>/four/<%= tournaments.PlayerSeven %>/<%= tournaments.PlayerEight %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
                   </td>
-                  <% } %>
+
                  
 
 
@@ -119,14 +119,14 @@
                   <td><%= tournaments.WinnerFirstQuarterFinal %>    <%= tournaments.ScoreNine %></td>
                   <td class="text-center"><%= tournaments.WinnerSecondQuarterFinal %>    <%= tournaments.ScoreTen %></td>
                  
-                  <% if (tournaments.CompleteTournament != "TRUE") { %> 
+
                   <td class="text-center">
                     <!-- ------------------------ -->
                     <!-- EDIT BUTTON HAS BEEN ADDED HERE -->
                     <!-- ------------------------ -->
                     <td class="text-center"><a href="/tournaments/<%= tournaments._id %>/five/<%= tournaments.WinnerFirstQuarterFinal %>/<%= tournaments.WinnerSecondQuarterFinal %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
                   </td>
-                  <% } %>
+
                   
 
                   
@@ -136,14 +136,14 @@
                   <td><%= tournaments.WinnerThirdQuarterFinal %>    <%= tournaments.ScoreEleven %></td>
                   <td class="text-center"><%= tournaments.WinnerFourthQuarterFinal %>     <%= tournaments.ScoreTwelve %></td>
                  
-                  <% if (tournaments.CompleteTournament != "TRUE") { %> 
+
                   <td class="text-center">
                     <!-- ------------------------ -->
                     <!-- EDIT BUTTON HAS BEEN ADDED HERE -->
                     <!-- ------------------------ -->
                     <td class="text-center"><a href="/tournaments/<%= tournaments._id %>/six/<%= tournaments.WinnerThirdQuarterFinal %>/<%= tournaments.WinnerFourthQuarterFinal %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
                   </td>
-                  <% } %>
+
                   
 
 
@@ -176,14 +176,14 @@
                   <td><%= tournaments.WinnerFirstSemiFinal %>    <%= tournaments.ScoreThirteen %></td>
                   <td class="text-center"><%= tournaments.WinnerSecondSemiFinal %>    <%= tournaments.ScoreFourteen %></td>
                  
-                  <% if (tournaments.CompleteTournament != "TRUE") { %> 
+
                   <td class="text-center">
                     <!-- ------------------------ -->
                     <!-- EDIT BUTTON HAS BEEN ADDED HERE -->
                     <!-- ------------------------ -->
                     <td class="text-center"><a href="/tournaments/<%= tournaments._id %>/seven/<%= tournaments.WinnerFirstSemiFinal %>/<%= tournaments.WinnerSecondSemiFinal %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Edit</a></td>
                   </td>
-                  <% } %>
+
                   
 
 
@@ -213,7 +213,7 @@
                 <tr>
                   <td><%= tournaments.WinnerFinal %></td>
                   
-                <% if (tournaments.CompleteTournament != "TRUE") { %>   
+                
                 <td class="text-center">
                     <!-- ------------------------ -->
                     <!-- COMPLETE A TOURNAMENT BUTTON HAS BEEN ADDED HERE -->
@@ -221,9 +221,8 @@
                     <i class="fa fa-check-square-o"></i> Submit
                     <button type="submit"  class="btn btn-primary"><a href="/tournaments/<%= tournaments._id %>/eight/eight/<%= tournaments.WinnerFinal %> %>" class="btn btn-primary btn-sm edit"><i class="fas fa-edit fa-sm"></i> Complement the tournament</a></button>
                   </td>
-                 <% } %> 
+                  
                 </tr>
-
 
                 
 

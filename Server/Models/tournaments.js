@@ -39,7 +39,8 @@ const TournamentSchema = new Schema({
     ScoreTwelve: Number,
     ScoreThirteen: Number,
     ScoreFourteen: Number,
-    Finished: String
+    Finished: String,
+    CompleteTournament: String
 }, {
     collection: "tournaments"
 });

@@ -110,6 +110,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
             });
             if (match === "eight") {
                 updatedTournamentItem.Finished = "Congratulations: " + secondPlayer;
+                updatedTournamentItem.CompleteTournament = "TRUE";
             }
             if (match === "one") {
                 updatedTournamentItem.ScoreOne = req.body.scoreone;
