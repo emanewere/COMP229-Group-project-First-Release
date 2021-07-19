@@ -38,13 +38,7 @@ const TournamentSchema = new Schema
     ScoreFive:Number,
     ScoreSix:Number,
     ScoreSeven:Number,
-    ScoreEight:Number,
-    ScoreNine:Number,
-    ScoreTen:Number,
-    ScoreEleven:Number,
-    ScoreTwelve:Number,
-    ScoreThirteen:Number,
-    ScoreFourteen:Number
+    ScoreEight:Number
     
 },
 {

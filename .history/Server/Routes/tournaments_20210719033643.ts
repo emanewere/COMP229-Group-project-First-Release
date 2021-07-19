@@ -203,7 +203,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
                 updatedTournamentItem.WinnerFirstQuarterFinal = firstPlayer;
               }
 
-              else if(updatedTournamentItem.ScoreOne < updatedTournamentItem.ScoreTwo)
+              else
               {
                 updatedTournamentItem.WinnerFirstQuarterFinal = secondPlayer ;
               }
@@ -220,7 +220,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
                 updatedTournamentItem.WinnerSecondQuarterFinal = firstPlayer;
               }
 
-              else if(updatedTournamentItem.ScoreThree < updatedTournamentItem.ScoreFour)
+              else
               {
                 updatedTournamentItem.WinnerSecondQuarterFinal = secondPlayer ;
               }
@@ -236,7 +236,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
                 updatedTournamentItem.WinnerThirdQuarterFinal = firstPlayer;
               }
 
-              else if(updatedTournamentItem.ScoreFive < updatedTournamentItem.ScoreSix)
+              else
               {
                 updatedTournamentItem.WinnerThirdQuarterFinal = secondPlayer ;
               }
@@ -252,7 +252,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
                 updatedTournamentItem.WinnerFourthQuarterFinal = firstPlayer;
               }
 
-              else if(updatedTournamentItem.ScoreSeven < updatedTournamentItem.ScoreEight)
+              else
               {
                 updatedTournamentItem.WinnerFourthQuarterFinal = secondPlayer ;
               }
@@ -268,7 +268,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
                 updatedTournamentItem.WinnerFirstSemiFinal = firstPlayer;
               }
 
-              else if(updatedTournamentItem.ScoreNine  < updatedTournamentItem.ScoreTen )
+              else
               {
                 updatedTournamentItem.WinnerFirstSemiFinal = secondPlayer ;
               }
@@ -285,7 +285,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
                 updatedTournamentItem.WinnerSecondSemiFinal = firstPlayer;
               }
 
-              else if(updatedTournamentItem.ScoreEleven  < updatedTournamentItem.ScoreTwelve )
+              else
               {
                 updatedTournamentItem.WinnerSecondSemiFinal = secondPlayer ;
               }
@@ -303,7 +303,7 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
                 updatedTournamentItem.WinnerFinal = firstPlayer;
               }
 
-              else if(updatedTournamentItem.ScoreThirteen  < updatedTournamentItem.ScoreFourteen )
+              else
               {
                 updatedTournamentItem.WinnerFinal = secondPlayer ;
               }

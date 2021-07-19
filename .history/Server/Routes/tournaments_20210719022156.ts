@@ -81,7 +81,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // GET the Tournament brackets edit page in order to edit an existing Tournament
-router.get('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
+router.get('/:id/:match/:firstplayer', (req, res, next) => {
 
   /*****************
    * APPROPRIATE CODE ADDED HERE *
@@ -143,14 +143,13 @@ router.get('/:id', (req, res, next) => {
 });
 
 // POST - process the information passed from the details form and update the document
-router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
+router.post('/:id/:match/:firstplayer', (req, res, next) => {
 
   /*****************
     * APPROPRIATE CODE ADDED HERE *
     *****************/
    let id = req.params.id; 
    let firstPlayer = req.params.firstplayer;
-   let secondPlayer = req.params.secondplayer;
   let match = req.params.match;
    // pass the id to the db
   tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
@@ -192,20 +191,20 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
 
            
             
-            
             if(match === "one")
             {
               updatedTournamentItem.ScoreOne = req.body.scoreone;
               updatedTournamentItem.ScoreTwo = req.body.scoretwo;
+
               //Move winner to the next round
               if(updatedTournamentItem.ScoreOne > updatedTournamentItem.ScoreTwo)
               {
                 updatedTournamentItem.WinnerFirstQuarterFinal = firstPlayer;
               }
 
-              else if(updatedTournamentItem.ScoreOne < updatedTournamentItem.ScoreTwo)
+              else
               {
-                updatedTournamentItem.WinnerFirstQuarterFinal = secondPlayer ;
+                updatedTournamentItem.WinnerFirstQuarterFinal = firstPlayer ;
               }
               
             }
@@ -214,100 +213,37 @@ router.post('/:id/:match/:firstplayer/:secondplayer', (req, res, next) => {
             {
               updatedTournamentItem.ScoreThree = req.body.scoreone;
               updatedTournamentItem.ScoreFour = req.body.scoretwo;
-              //Move winner to the next round
-              if(updatedTournamentItem.ScoreThree > updatedTournamentItem.ScoreFour)
-              {
-                updatedTournamentItem.WinnerSecondQuarterFinal = firstPlayer;
-              }
-
-              else if(updatedTournamentItem.ScoreThree < updatedTournamentItem.ScoreFour)
-              {
-                updatedTournamentItem.WinnerSecondQuarterFinal = secondPlayer ;
-              }
+              updatedTournamentItem.WinnerSecondQuarterFinal = "Germany";
             }
 
             else if(match === "three")
             {
               updatedTournamentItem.ScoreFive = req.body.scoreone;
               updatedTournamentItem.ScoreSix = req.body.scoretwo;
-              //Move winner to the next round
-              if(updatedTournamentItem.ScoreFive > updatedTournamentItem.ScoreSix)
-              {
-                updatedTournamentItem.WinnerThirdQuarterFinal = firstPlayer;
-              }
-
-              else if(updatedTournamentItem.ScoreFive < updatedTournamentItem.ScoreSix)
-              {
-                updatedTournamentItem.WinnerThirdQuarterFinal = secondPlayer ;
-              }
+              updatedTournamentItem.WinnerThirdQuarterFinal = "Brazil";
             }
 
             else if(match === "four")
             {
               updatedTournamentItem.ScoreSeven = req.body.scoreone;
               updatedTournamentItem.ScoreEight = req.body.scoretwo;
-              //Move winner to the next round
-              if(updatedTournamentItem.ScoreSeven > updatedTournamentItem.ScoreEight)
-              {
-                updatedTournamentItem.WinnerFourthQuarterFinal = firstPlayer;
-              }
-
-              else if(updatedTournamentItem.ScoreSeven < updatedTournamentItem.ScoreEight)
-              {
-                updatedTournamentItem.WinnerFourthQuarterFinal = secondPlayer ;
-              }
+              updatedTournamentItem.WinnerFourthQuarterFinal = "Dutch";
             }
 
             else if(match === "five")
             {
-              updatedTournamentItem.ScoreNine  = req.body.scoreone;
-              updatedTournamentItem.ScoreTen  = req.body.scoretwo;
-              //Move winner to the next round
-              if(updatedTournamentItem.ScoreNine  > updatedTournamentItem.ScoreTen )
-              {
-                updatedTournamentItem.WinnerFirstSemiFinal = firstPlayer;
-              }
-
-              else if(updatedTournamentItem.ScoreNine  < updatedTournamentItem.ScoreTen )
-              {
-                updatedTournamentItem.WinnerFirstSemiFinal = secondPlayer ;
-              }
-              
+              updatedTournamentItem.WinnerFirstSemiFinal = "Greece";
             }
 
             else if(match === "six")
             {
-              updatedTournamentItem.ScoreEleven  = req.body.scoreone;
-              updatedTournamentItem.ScoreTwelve  = req.body.scoretwo;
-              //Move winner to the next round
-              if(updatedTournamentItem.ScoreEleven  > updatedTournamentItem.ScoreTwelve )
-              {
-                updatedTournamentItem.WinnerSecondSemiFinal = firstPlayer;
-              }
-
-              else if(updatedTournamentItem.ScoreEleven  < updatedTournamentItem.ScoreTwelve )
-              {
-                updatedTournamentItem.WinnerSecondSemiFinal = secondPlayer ;
-              }
-              
+              updatedTournamentItem.WinnerSecondSemiFinal = "Brazil";
             }
 
 
             else if(match === "seven")
             {
-              updatedTournamentItem.ScoreThirteen  = req.body.scoreone;
-              updatedTournamentItem.ScoreFourteen  = req.body.scoretwo;
-              //Move winner to the next round
-              if(updatedTournamentItem.ScoreThirteen  > updatedTournamentItem.ScoreFourteen )
-              {
-                updatedTournamentItem.WinnerFinal = firstPlayer;
-              }
-
-              else if(updatedTournamentItem.ScoreThirteen  < updatedTournamentItem.ScoreFourteen )
-              {
-                updatedTournamentItem.WinnerFinal = secondPlayer ;
-              }
-              
+              updatedTournamentItem.WinnerFinal = "Brazil";
             }
 
            
