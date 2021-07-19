@@ -28,6 +28,7 @@ router.post('/add', (req, res, next) => {
     let newTournament = new tournaments_1.default({
         "Name": req.body.name,
         "StartDate": req.body.startdate,
+        "Description": req.body.briefdescription,
         "WinnerFirstQuarterFinal": "WinnerFirstQuarterFinal",
         "WinnerSecondQuarterFinal": "WinnerSecondQuarterFinal",
         "WinnerThirdQuarterFinal": "WinnerThirdQuarterFinal",
