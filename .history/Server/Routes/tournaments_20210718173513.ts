@@ -92,17 +92,7 @@ router.get('/:id', (req, res, next) => {
        }
 
        // show the edit view
-       if(tournamentItemToEdit.IsSet==="TRUE")
-       {
-        // show the edit view
-        res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit});  
-       }
-
-       else
-       {
-        res.render('tournaments/registerplayers', { title: 'Register players', page: 'edit', tournaments: tournamentItemToEdit});  
-       }
-       
+       res.render('tournaments/registerplayers', { title: 'Register players', page: 'edit', tournaments: ''});
    });
 });
 
@@ -114,35 +104,13 @@ router.post('/:id', (req, res, next) => {
     *****************/
    let id = req.params.id;
 
-   // pass the id to the db
-  tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
-  {
-      if(err)
-      {
-          console.error(err);
-          res.end(err);
-      }
-
-      else
-      {
-          // show the edit view
-        
-        
-           // instantiate a new tournament Item
+   // instantiate a new tournament Item
    let updatedTournamentItem = new tournament
    ({
      "_id": id,
-     "PlayerOne": req.body.name,
+     "Name": req.body.name,
      "StartDate": req.body.startdate,
-     "PlayerOne": req.body.playerone,
-     "PlayerTwo": req.body.playertwo,
-     "PlayerThree": req.body.playerthree,
-     "PlayerFour": req.body.playerfour,
-     "PlayerFive": req.body.playerfive,
-     "PlayerSix": req.body.playersix,
-     "PlayerSeven": req.body.playerseven,
-     "PlayerEight": req.body.playereight,
-     "IsSet": "TRUE"
+     
    });
  
    // find the tournament item via db.tournaments.update({"_id":id}) and then update
@@ -152,32 +120,9 @@ router.post('/:id', (req, res, next) => {
        console.error(err);
        res.end(err);
      }
-
-  // pass the id to the db
-  tournament.findById(id, {}, {}, (err, tournamentItemToEdit) => 
-  {
-      if(err)
-      {
-          console.error(err);
-          res.end(err);
-      }
-
-      // show the edit view
-      res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit});
-  });
  
-     //res.redirect('/tournaments');
-    // res.render('tournaments/brackets', { title: 'Tournament bracket', page: 'brackets', tournaments: 'tournaments'});
+     res.redirect('/tournaments');
    });
-        }
-      
-
-      
-
-      
-  });
-
-  
 
 });
 
@@ -199,8 +144,6 @@ router.get('/delete/:id', (req, res, next) => {
      }
  
      res.redirect('/tournaments');
-     // show the edit view
-    
    });
    
 });

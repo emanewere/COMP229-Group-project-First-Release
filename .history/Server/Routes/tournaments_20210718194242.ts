@@ -94,8 +94,7 @@ router.get('/:id', (req, res, next) => {
        // show the edit view
        if(tournamentItemToEdit.IsSet==="TRUE")
        {
-        // show the edit view
-        res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit});  
+         
        }
 
        else
@@ -126,8 +125,15 @@ router.post('/:id', (req, res, next) => {
       else
       {
           // show the edit view
-        
-        
+        //res.render('tournaments/brackets', { title: 'Register players', page: 'brackets', tournaments: tournamentItemToEdit});
+        if(tournament.PlayerOne === "England")
+        {
+           // show the edit view
+          res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit});
+        }
+
+        else
+        {
            // instantiate a new tournament Item
    let updatedTournamentItem = new tournament
    ({
@@ -170,7 +176,7 @@ router.post('/:id', (req, res, next) => {
     // res.render('tournaments/brackets', { title: 'Tournament bracket', page: 'brackets', tournaments: 'tournaments'});
    });
         }
-      
+      }
 
       
 

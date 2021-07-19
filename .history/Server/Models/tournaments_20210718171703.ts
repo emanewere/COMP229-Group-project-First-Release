@@ -22,8 +22,8 @@ const TournamentSchema = new Schema
     PlayerFive: String,
     PlayerSix: String,
     PlayerSeven: String,
-    PlayerEight:String,
-    IsSet: String
+    PlayerEight:String
+
     
 },
 {

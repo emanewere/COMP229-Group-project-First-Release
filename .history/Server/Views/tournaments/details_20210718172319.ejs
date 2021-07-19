@@ -17,6 +17,17 @@
                 placeholder="Start Date" name="startdate" value="<%= tournaments.StartDate %>"  required>
               </div>
               
+              <div class="form-group">
+                <label for="DescriptionTextField">Description</label>
+                <input type="text" class="form-control" id="DescriptionTextField"
+                placeholder="Description" name="description" value="<%= tournaments.Description %>"  required>
+              </div>
+              
+              <div class="form-group">
+                <label for="PlayerOneTextField">PlayerOne</label>
+                <input type="text" class="form-control" id="PlayerOneTextField"
+                placeholder="PlayerOne" name="playerone" value="<%= tournaments.PlayerOne %>"  required>
+              </div>
               
               <button type="submit"  class="btn btn-primary"><i class="fa fa-check-square-o"></i> Submit</button>
               <a href="/tournaments" class="btn btn-warning"><i class="fa fa-undo"></i> Cancel</a>

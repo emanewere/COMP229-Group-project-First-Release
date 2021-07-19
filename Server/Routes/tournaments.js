@@ -44,22 +44,50 @@ router.get('/:id', (req, res, next) => {
             console.error(err);
             res.end(err);
         }
-        res.render('tournaments/details', { title: 'Edit a tournament information', page: 'details', tournaments: tournamentItemToEdit });
+        if (tournamentItemToEdit.IsSet === "TRUE") {
+            res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit });
+        }
+        else {
+            res.render('tournaments/registerplayers', { title: 'Register players', page: 'edit', tournaments: tournamentItemToEdit });
+        }
     });
 });
 router.post('/:id', (req, res, next) => {
     let id = req.params.id;
-    let updatedTournamentItem = new tournaments_1.default({
-        "_id": id,
-        "Name": req.body.name,
-        "StartDate": req.body.startdate,
-    });
-    tournaments_1.default.updateOne({ _id: id }, updatedTournamentItem, {}, (err) => {
+    tournaments_1.default.findById(id, {}, {}, (err, tournamentItemToEdit) => {
         if (err) {
             console.error(err);
             res.end(err);
         }
-        res.redirect('/tournaments');
+        else {
+            let updatedTournamentItem = new tournaments_1.default({
+                "_id": id,
+                "PlayerOne": req.body.name,
+                "StartDate": req.body.startdate,
+                "PlayerOne": req.body.playerone,
+                "PlayerTwo": req.body.playertwo,
+                "PlayerThree": req.body.playerthree,
+                "PlayerFour": req.body.playerfour,
+                "PlayerFive": req.body.playerfive,
+                "PlayerSix": req.body.playersix,
+                "PlayerSeven": req.body.playerseven,
+                "PlayerEight": req.body.playereight,
+                "IsSet": "TRUE"
+            });
+            tournaments_1.default.updateOne({ _id: id }, updatedTournamentItem, {}, (err) => {
+                if (err) {
+                    console.error(err);
+                    res.end(err);
+                }
+                tournaments_1.default.findById(id, {}, {}, (err, tournamentItemToEdit) => {
+                    if (err) {
+                        console.error(err);
+                        res.end(err);
+                    }
+                    res.render('tournaments/brackets', { title: 'Bracket for tournament', page: 'brackets', tournaments: tournamentItemToEdit });
+                });
+            });
+        }
     });
 });
 router.get('/delete/:id', (req, res, next) => {
