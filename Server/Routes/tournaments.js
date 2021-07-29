@@ -21,6 +21,20 @@ router.get('/', (req, res, next) => {
         }
     });
 });
+router.get('/tournament/tournament', (req, res, next) => {
+    tournaments_1.default.find((err, tournaments) => {
+        if (err) {
+            return console.error(err);
+        }
+        else {
+            res.render('tournaments/index', {
+                title: 'Tournaments',
+                page: 'tournaments',
+                tournaments: tournaments
+            });
+        }
+    });
+});
 router.get('/add', (req, res, next) => {
     res.render('tournaments/details', { title: 'Createatournament', page: 'details', tournaments: '' });
 });

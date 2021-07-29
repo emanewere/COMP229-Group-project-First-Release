@@ -34,7 +34,7 @@ db.once("open", function()
 
 // define routers
 import index from '../Routes/index'; // top level routes
-import tournaments from '../Routes/tournaments'; // routes for bo
+import tournaments from '../Routes/tournaments'; // routes for tournaments
 
 // Express Web App Configuration
 const app = express();
@@ -53,8 +53,8 @@ app.use(express.static(path.join(__dirname, '../../Client')));
 app.use(express.static(path.join(__dirname, '../../node_modules')));
 
 // route redirects
-app.use('/', index);
-app.use('/tournaments',tournaments);
+app.use('/', tournaments);
+app.use('/tournaments/tournaments',tournaments);
 
 
 // catch 404 and forward to error handler

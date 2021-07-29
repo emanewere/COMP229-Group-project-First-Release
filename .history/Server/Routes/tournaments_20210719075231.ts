@@ -14,30 +14,8 @@ export default router;
 // define the tournament model
 import tournament from '../Models/tournaments';
 
-
 /* GET tournaments List page. READ */
-router.get('/', (req, res, next) => 
-{
-  // find all tournaments in the tournaments collection
-  tournament.find( (err, tournaments) => {
-    if (err) {
-      return console.error(err);
-      
-    }
-    else {
-        res.render('tournaments/index', {
-        title: 'Tournaments',
-        page: 'tournaments',
-        tournaments: tournaments
-      });
-    }
-  });
-
-});
-
-
-/* GET tournaments List page. READ */
-router.get('/tournament/tournament', (req, res, next) => 
+router.get('/tournament', (req, res, next) => 
 {
   // find all tournaments in the tournaments collection
   tournament.find( (err, tournaments) => {

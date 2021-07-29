@@ -9,8 +9,8 @@ exports.default = router;
 router.get('/', (req, res, next) => {
     res.render('content/index', {
         title: 'Home',
-        page: 'home',
-        tournaments: ''
+        page: 'index',
+        tournaments: 'tournament'
     });
 });
 //# sourceMappingURL=index.js.map

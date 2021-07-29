@@ -18,13 +18,11 @@ import tournament from '../Models/tournaments';
 
 /* GET home page. wildcard */
 router.get('/', (req, res, next) => {
-  res.render('content/index', {
+  res.render('content/tournament/homepage', {
     title: 'Home',
-    page: 'index',
-    tournaments: 'tournament'
+    page: 'home',
+    tournaments: ''
    });
 });
-
-
 
 //module.exports = router;
